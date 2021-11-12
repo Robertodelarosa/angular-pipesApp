@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-no-comunes',
@@ -46,4 +47,13 @@ export class NoComunesComponent {
     { nombre: 'Robin', vuela: false },
     { nombre: 'Acuaman', vuela: false },
   ]
+
+  //Async pipe
+  miObservable = interval(1000);
+
+  valorPromesa = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Tenemos data de promesa')
+    }, 3000)
+  });
 }
