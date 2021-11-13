@@ -13,22 +13,25 @@
       class="mr-1 p-button-warning"
     ></button>
     <button
-      type="button"
       pButton
+      (click)="cambiarOrden('nombre')"
+      type="button"
       icon="pi pi-sort"
       label="Por nombre"
       class="mr-1"
     ></button>
     <button
-      type="button"
       pButton
+      (click)="cambiarOrden('vuela')"
+      type="button"
       icon="pi pi-sort"
-      label="Valores"
+      label="Vuela"
       class="mr-1 p-button-success"
     ></button>
     <button
-      type="button"
       pButton
+      (click)="cambiarOrden('color')"
+      type="button"
       icon="pi pi-sort"
       label="Por color"
       class="mr-1 p-button-help"
@@ -37,7 +40,7 @@
 </p-toolbar>
 <div class="grid">
   <div class="col mt-2">
-    <p-table [value]="heroes" responsiveLayout="scroll">
+    <p-table [value]="heroes | ordenar: ordenarPor" responsiveLayout="scroll">
       <ng-template pTemplate="header">
         <tr>
           <th>Nombre</th>
@@ -48,8 +51,8 @@
       <ng-template pTemplate="body" let-heroe>
         <tr>
           <td>{{ heroe.nombre }}</td>
-          <td>{{ heroe.vuela }}</td>
-          <td>{{ heroe.color }}</td>
+          <td>{{ heroe.vuela | vuela | titlecase }}</td>
+          <td>{{ heroe.color | color | titlecase }}</td>
         </tr>
       </ng-template>
     </p-table>
